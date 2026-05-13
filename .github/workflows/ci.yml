@@ -45,7 +45,7 @@ jobs:
     - name: Generar reporte
       if: always()
       run: |
-        echo "## Pipeline Report" > report.md
+        echo "# Pipeline Report" > report.md
         echo "- Commit: ${{ github.sha }}" >> report.md
         echo "- Branch: ${{ github.ref_name }}" >> report.md
         echo "- Status: ${{ job.status }}" >> report.md
