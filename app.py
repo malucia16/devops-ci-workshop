@@ -21,13 +21,18 @@ def health():
 def metrics():
     cpu = psutil.cpu_percent()
     mem = psutil.virtual_memory().percent
-    return f"""# HELP app_cpu_percent CPU usage percentage
+
+    data = f"""
+# HELP app_cpu_percent CPU usage percentage
 # TYPE app_cpu_percent gauge
 app_cpu_percent {cpu}
+
 # HELP app_memory_percent Memory usage percentage
 # TYPE app_memory_percent gauge
 app_memory_percent {mem}
 """
+
+    return Response(data, mimetype='text/plain')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
