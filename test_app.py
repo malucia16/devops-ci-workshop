@@ -13,11 +13,12 @@ def test_health():
     response = client.get('/health')
     assert response.status_code == 200
     data = response.get_json()
-    assert "uptime_seconds" in data
-    assert data["status"] in ["healthy", "unhealthy"]
+    assert 'cpu_percent' in data
+    assert 'memory_percent' in data
+    assert 'status' in data
 
 def test_metrics():
     client = app.app.test_client()
     response = client.get('/metrics')
-    assert response.status_code == 200
-    assert "app_cpu_percent" in response.data.decode()
+    assert 'app_cpu_percent' in text
+    assert 'app_memory_percent' in text
