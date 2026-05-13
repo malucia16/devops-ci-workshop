@@ -18,7 +18,7 @@ def health():
     })
 
 @app.route('/metrics')
-def metric():
+def metrics():
     cpu = psutil.cpu_percent()
     mem = psutil.virtual_memory().percent
     return f"""# HELP app_cpu_percent CPU usage percentage
